@@ -7,7 +7,6 @@ const ConflictError = require('../errors/ConflictError');
 const BadRequestError = require('../errors/BadRequestError');
 
 module.exports.getUser = (req, res, next) => {
-  console.log(req.data);
   const { _id } = req.user;
   return User.findOne({ _id })
     .then((user) => {
