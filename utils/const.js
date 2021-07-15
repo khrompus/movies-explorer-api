@@ -14,6 +14,16 @@ const settingCors = {
   credentials: true,
 };
 
+const mongodbUrl = 'mongodb://localhost:27017/bitfilmsdb';
+const mongodbSetting = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+};
+
 module.exports = {
   settingCors,
+  mongodbUrl,
+  mongodbSetting,
 };

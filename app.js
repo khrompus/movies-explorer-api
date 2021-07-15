@@ -8,17 +8,12 @@ const cors = require('cors');
 const router = require('./routes/index');
 const errorRouter = require('./routes/Error');
 const { requestLogger, errorLogger } = require('./middlewares/Logger');
-const { settingCors } = require('./utils/const');
+const { settingCors, mongodbUrl, mongodbSetting } = require('./utils/const');
 const { limiter } = require('./utils/rateLimiter');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+mongoose.connect(mongodbUrl, mongodbSetting);
 app.use('*', cors(settingCors));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
